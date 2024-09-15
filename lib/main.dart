@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_practice_bloc/example/bloc_builder/bloc_builder_example.dart';
 import 'package:my_practice_bloc/example/kue_cubit/cubit_example.dart';
 import 'package:my_practice_bloc/example/stream/stream_example.dart';
 
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: CubitExample(),
+      home: BlocBuilderExample(),
     );
   }
 }
