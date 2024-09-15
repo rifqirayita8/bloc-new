@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Stream<int> _counterStream() async* {
-  for (int i=0; i<10; i++) {
+  for (int i=0; i<=10; i++) {
     await Future.delayed(Duration(seconds: 1));
     yield i;
   }
@@ -17,29 +17,27 @@ class StreamExample extends StatelessWidget {
     //beda kalau stateful, rebuild semua
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: StreamBuilder<int>(
-          stream: _counterStream(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Column(
-                children: [
-                  Text(
+      body: Column(
+        children: [
+          StreamBuilder<int>(
+            stream: _counterStream(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: Text(
                     'Loading...'
-                  )
-                ],
-              );
-            } else {
-            return Column(
-              children: [
-                Text(
+                  ),
+                );
+              } else {
+              return Center(
+                child: Text(
                   '${snapshot.data}'
                 ),
-              ],
-            );
+              );
+              }
             }
-          }
-        ),
+          ),
+        ],
       ),
     );
   }

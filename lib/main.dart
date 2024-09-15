@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_practice_bloc/example/stream_example.dart';
+import 'package:my_practice_bloc/example/kue_cubit/cubit_example.dart';
+import 'package:my_practice_bloc/example/stream/stream_example.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,7 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: StreamExample(),
+      home: CubitExample(),
     );
   }
 }
