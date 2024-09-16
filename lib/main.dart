@@ -5,8 +5,13 @@ import 'package:my_practice_bloc/example/dependency_injection_provider/counter_c
 import 'package:my_practice_bloc/example/dependency_injection_provider/di_provider_example.dart';
 import 'package:my_practice_bloc/example/kue_cubit/cubit_example.dart';
 import 'package:my_practice_bloc/example/stream/stream_example.dart';
+import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:my_practice_bloc/features/auth/presentation/pages/login_page.dart';
+import 'package:my_practice_bloc/injection.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MainApp());
 }
 
@@ -15,10 +20,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterCubitThree(),
-      child: MaterialApp(
-        home: DiProviderExample(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CounterCubitThree()),
+        BlocProvider(create: (context) => myInjection<AuthBloc>()),
+      ],
+      child: const MaterialApp(
+        home: LoginPage(),
       ),
     );
   }
