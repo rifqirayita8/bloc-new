@@ -28,8 +28,8 @@ class CounterCubitTwo extends Cubit<int> {
   }
 }
 
-class BlocBuilderExample extends StatelessWidget {
-  const BlocBuilderExample({super.key});
+class BlocBuilderConsumerExample extends StatelessWidget {
+  const BlocBuilderConsumerExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +39,40 @@ class BlocBuilderExample extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          BlocBuilder<CounterCubitTwo, int>(
+          BlocListener<CounterCubitTwo, int>(
             bloc: counterCubitTwo,
-            buildWhen: (previous, current) {
+            listenWhen: (previous, current) {
               if (current % 2 == 0) {
                 return true;
               } else {
                 return false;
               }
             },
-            builder: (context, state) {
-              return Center(
-                child: Text(
-                  '$state'
+            listener: (context, state) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Angka Genap!'),
+                  duration: Duration(seconds: 1),
                 )
               );
             },
+            child: BlocBuilder<CounterCubitTwo, int>(
+              bloc: counterCubitTwo,
+              buildWhen: (previous, current) {
+                if (current % 2 == 0) {
+                  return true;
+                } else {
+                  return false;
+                }
+              },
+              builder: (context, state) {
+                return Center(
+                  child: Text(
+                    '$state'
+                  )
+                );
+              },
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -70,7 +88,7 @@ class BlocBuilderExample extends StatelessWidget {
                   counterCubitTwo.increment();
                 },
                 child: Text('Increment'),
-              )
+              ),
             ],
           )
         ],
@@ -78,3 +96,4 @@ class BlocBuilderExample extends StatelessWidget {
     );
   }
 }
+
