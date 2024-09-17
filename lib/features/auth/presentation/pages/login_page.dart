@@ -12,7 +12,13 @@ class LoginPage extends StatelessWidget {
     final passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login Page'),
+        title: const Text(
+          'NDARU QINTIL',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0
+          ),
+        ),
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
