@@ -13,3 +13,13 @@ final class AuthLogin extends AuthEvent {
 
   const AuthLogin({required this.email, required this.password});
 }
+
+final class AuthSetUrl extends AuthEvent {
+  final String url;
+
+  const AuthSetUrl({required this.url});
+}
+
+final class AuthLogout extends AuthEvent {
+  const AuthLogout();
+}

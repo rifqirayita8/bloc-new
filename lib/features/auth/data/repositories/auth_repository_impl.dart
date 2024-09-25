@@ -1,13 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:my_practice_bloc/core/error/exception.dart';
 import 'package:my_practice_bloc/core/error/failure.dart';
+import 'package:my_practice_bloc/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:my_practice_bloc/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:my_practice_bloc/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDatasource authRemoteDatasource;
+  final AuthLocalDatasource authLocalDatasource;
 
-  AuthRepositoryImpl({required this.authRemoteDatasource});
+  AuthRepositoryImpl(
+    this.authRemoteDatasource,
+    this.authLocalDatasource
+  );
 
   @override
   Future<Either<Failure, String>> authLogin(String email, String password) async {
@@ -21,4 +26,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
   
+  @override
+  Future<void> authSetUrl(String url) async {
+    return await authLocalDatasource.authSetUrl(url);
+  }
 }
