@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSetUrl>((event, emit) async {
       final uri= Uri.tryParse(event.url);
       if (uri == null || uri.scheme.isEmpty || uri.authority.isEmpty) {
+        print('url invalid');
         emit(const SetUrlFailure(message: 'Invalid URL'));
         return;
       }
