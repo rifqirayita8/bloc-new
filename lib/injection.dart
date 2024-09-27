@@ -8,6 +8,10 @@ import 'package:my_practice_bloc/features/auth/domain/repositories/auth_reposito
 import 'package:my_practice_bloc/features/auth/domain/usecases/user_login.dart';
 import 'package:my_practice_bloc/features/auth/domain/usecases/user_set_url.dart';
 import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:my_practice_bloc/features/profile/data/datasources/profile_remote_datasource.dart';
+import 'package:my_practice_bloc/features/profile/data/repositories/profile_repostitory_impl.dart';
+import 'package:my_practice_bloc/features/profile/domain/repositories/profile_repository.dart';
+import 'package:my_practice_bloc/features/profile/domain/usecases/get_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var myInjection= GetIt.instance;
@@ -61,6 +65,25 @@ Future<void> init() async {
   myInjection.registerLazySingleton<AuthLocalDatasource>(
     () => AuthLocalDatasourceImpl(
       myInjection(),
+    )
+  );
+
+  // get user
+  myInjection.registerLazySingleton(
+    () => GetUser(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton<ProfileRepository>(
+    () => ProfileRepositoryImpl(
+      myInjection(),
+    )
+  );
+
+  myInjection.registerLazySingleton<ProfileRemoteDatasource>(
+    () => ProfileRemoteDatasourceImpl(
+      // myInjection(),
     )
   );
 }

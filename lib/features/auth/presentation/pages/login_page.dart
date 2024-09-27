@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_practice_bloc/core/services/shared_preferences.dart';
 import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_practice_bloc/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:my_practice_bloc/features/profile/presentation/pages/get_user_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -131,6 +132,20 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blue,
                     child: const Text(
                       'cek khodam',
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    ),
+                  )
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const GetUserPage()));
+                  }, 
+                  child: Container(
+                    color: Colors.blue,
+                    child: const Text(
+                      'Pindah page',
                       style: TextStyle(
                         color: Colors.white
                       ),
