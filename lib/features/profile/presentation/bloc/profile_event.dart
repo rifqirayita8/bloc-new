@@ -6,3 +6,13 @@ abstract class ProfileEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetProfile extends ProfileEvent {
+  final GetUserParams params;
+
+  const GetProfile({required this.params});
+}
+
+class ResetProfile extends ProfileEvent {
+  const ResetProfile();
+}

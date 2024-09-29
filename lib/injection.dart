@@ -12,6 +12,7 @@ import 'package:my_practice_bloc/features/profile/data/datasources/profile_remot
 import 'package:my_practice_bloc/features/profile/data/repositories/profile_repostitory_impl.dart';
 import 'package:my_practice_bloc/features/profile/domain/repositories/profile_repository.dart';
 import 'package:my_practice_bloc/features/profile/domain/usecases/get_user.dart';
+import 'package:my_practice_bloc/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var myInjection= GetIt.instance;
@@ -69,6 +70,12 @@ Future<void> init() async {
   );
 
   // get user
+  myInjection.registerFactory(
+    () => ProfileBloc(
+      myInjection(),
+    )
+  );
+  
   myInjection.registerLazySingleton(
     () => GetUser(
       myInjection()
