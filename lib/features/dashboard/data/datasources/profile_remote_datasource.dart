@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:my_practice_bloc/features/profile/data/models/profile_model.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
 
 abstract class ProfileRemoteDatasource {
   Future<ProfileModel> getUser(GetUserParams params);

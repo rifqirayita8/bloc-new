@@ -6,11 +6,11 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:my_practice_bloc/features/profile/data/datasources/profile_remote_datasource.dart'
+import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_remote_datasource.dart'
     as _i3;
-import 'package:my_practice_bloc/features/profile/data/models/profile_model.dart'
+import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart'
     as _i2;
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart'
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart'
     as _i5;
 
 // ignore_for_file: type=lint

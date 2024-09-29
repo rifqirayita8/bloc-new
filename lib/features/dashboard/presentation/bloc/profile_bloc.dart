@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_practice_bloc/features/profile/domain/entities/profile.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/get_user.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/entities/profile.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/get_user.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

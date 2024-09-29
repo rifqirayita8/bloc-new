@@ -7,7 +7,7 @@ import 'package:my_practice_bloc/example/kue_cubit/cubit_example.dart';
 import 'package:my_practice_bloc/example/stream/stream_example.dart';
 import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_practice_bloc/features/auth/presentation/pages/login_page.dart';
-import 'package:my_practice_bloc/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:my_practice_bloc/features/dashboard/presentation/bloc/profile_bloc.dart';
 import 'package:my_practice_bloc/injection.dart';
 
 void main() async{

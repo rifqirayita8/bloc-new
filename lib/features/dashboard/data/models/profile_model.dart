@@ -1,20 +1,24 @@
-import 'package:my_practice_bloc/features/profile/domain/entities/profile.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/entities/profile.dart';
 
 class ProfileModel extends Profile {
+  final String firstName;
+  final String lastName;
 
   const ProfileModel({
     required super.id, 
-    required super.first_name, 
-    required super.last_name, 
+    required this.firstName,
+    required this.lastName,
     required super.email, 
     required super.avatar
-  });
+  }) : super(
+    fullName: "$firstName $lastName",
+  ) ;
   
   factory ProfileModel.fromJson(Map<String, dynamic> data) {
     return ProfileModel(
       id: data['id'] ?? '', 
-      first_name: data['first_name'] ?? '', 
-      last_name: data['last_name'] ?? '', 
+      firstName: data['first_name'] ?? '', 
+      lastName: data['last_name'] ?? '', 
       email: data['email'] ?? '', 
       avatar: data['avatar'] ?? '',
     );
@@ -23,8 +27,8 @@ class ProfileModel extends Profile {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'first_name': first_name,
-      'last_name': last_name,
+      'first_name': firstName,
+      'last_name': lastName,
       'email': email,
       'avatar': avatar
     };

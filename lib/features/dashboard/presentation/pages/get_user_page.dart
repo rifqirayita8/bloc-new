@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_practice_bloc/features/profile/domain/entities/profile.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart';
-import 'package:my_practice_bloc/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/entities/profile.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/presentation/bloc/profile_bloc.dart';
 
 class GetUserPage extends StatelessWidget {
   const GetUserPage({super.key});
@@ -87,8 +87,7 @@ class GetUserPage extends StatelessWidget {
                   return Column(
                     children: [
                       Text(user.id.toString()),
-                      Text(user.first_name),
-                      Text(user.last_name),
+                      Text(user.fullName),
                       Text(user.email),
                       Text(user.avatar),
                     ],

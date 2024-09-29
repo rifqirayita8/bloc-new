@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_practice_bloc/features/profile/data/datasources/profile_remote_datasource.dart';
-import 'package:my_practice_bloc/features/profile/data/models/profile_model.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_remote_datasource.dart';
+import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
 
 // Annotation which generates the cat.mocks.dart library and the MockCat class.
 @GenerateNiceMocks([MockSpec<ProfileRemoteDatasource>()])
@@ -18,8 +18,8 @@ void main() async {
 
   ProfileModel fakeProfileModel= const ProfileModel(
     id: userId, 
-    first_name: 'Joko', 
-    last_name: 'Widodo', 
+    firstName: 'Joko', 
+    lastName: 'Widodo', 
     email: 'mulyono@gmail.com', 
     avatar: 'ikn.jpg/$userId'
   );

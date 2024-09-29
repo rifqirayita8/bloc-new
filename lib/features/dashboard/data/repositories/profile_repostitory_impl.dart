@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:my_practice_bloc/core/error/failure.dart';
-import 'package:my_practice_bloc/features/profile/data/datasources/profile_remote_datasource.dart';
-import 'package:my_practice_bloc/features/profile/domain/entities/profile.dart';
-import 'package:my_practice_bloc/features/profile/domain/repositories/profile_repository.dart';
-import 'package:my_practice_bloc/features/profile/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_remote_datasource.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/entities/profile.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/repositories/profile_repository.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
 
 class ProfileRepositoryImpl  implements ProfileRepository {
   final ProfileRemoteDatasource profileRemoteDatasource;
