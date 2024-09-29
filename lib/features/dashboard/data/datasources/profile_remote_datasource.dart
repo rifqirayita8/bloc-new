@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart';
-import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
+import '../models/paint_model.dart';
+import '../models/profile_model.dart';
+import '../../domain/usecases/dashboard_params.dart';
 
 abstract class ProfileRemoteDatasource {
-  Future<ProfileModel> getUser(GetUserParams params);
+  Future<ProfileModel> getUser(DashboardParams params);
+  Future<PaintModel> getPaint(DashboardParams params);
 }
 
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
-  // final Dio dio;
-
-  // ProfileRemoteDatasourceImpl(this.dio);
   @override
-  Future<ProfileModel> getUser(GetUserParams params) async {
+  Future<ProfileModel> getUser(DashboardParams params) async {
     final dio= Dio();
     try {
       final response= await dio.get('https://reqres.in/api/users/${params.id}');
@@ -23,6 +22,18 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
       }
     } catch(e) {
       throw Exception('Failed to load user: $e');
+    }
+  }
+  
+  @override
+  Future<PaintModel> getPaint(DashboardParams params) async {
+    try {
+      final dio= Dio();
+      final response = await dio.get('https://reqres.in/api/unknown/${params.id}');
+      final dataRes= response.data['data'];
+      return PaintModel.fromJson(dataRes);
+    } catch(e) {
+      throw Exception('Failed to load paint: $e');
     }
   }
   

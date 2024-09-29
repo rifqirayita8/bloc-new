@@ -1,18 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
-import 'package:my_practice_bloc/features/auth/data/datasources/auth_local_datasource.dart';
-import 'package:my_practice_bloc/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:my_practice_bloc/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:my_practice_bloc/features/auth/domain/repositories/auth_repository.dart';
-import 'package:my_practice_bloc/features/auth/domain/usecases/user_login.dart';
-import 'package:my_practice_bloc/features/auth/domain/usecases/user_set_url.dart';
-import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_remote_datasource.dart';
-import 'package:my_practice_bloc/features/dashboard/data/repositories/profile_repostitory_impl.dart';
-import 'package:my_practice_bloc/features/dashboard/domain/repositories/profile_repository.dart';
-import 'package:my_practice_bloc/features/dashboard/domain/usecases/get_user.dart';
-import 'package:my_practice_bloc/features/dashboard/presentation/bloc/profile_bloc.dart';
+import 'core/services/shared_preferences.dart';
+import 'features/auth/data/datasources/auth_local_datasource.dart';
+import 'features/auth/data/datasources/auth_remote_datasource.dart';
+import 'features/auth/data/repositories/auth_repository_impl.dart';
+import 'features/auth/domain/repositories/auth_repository.dart';
+import 'features/auth/domain/usecases/user_login.dart';
+import 'features/auth/domain/usecases/user_set_url.dart';
+import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/dashboard/data/datasources/profile_remote_datasource.dart';
+import 'features/dashboard/data/repositories/profile_repostitory_impl.dart';
+import 'features/dashboard/domain/repositories/dashboard_repository.dart';
+import 'features/dashboard/domain/usecases/get_paint.dart';
+import 'features/dashboard/domain/usecases/get_user.dart';
+import 'features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var myInjection= GetIt.instance;
@@ -71,7 +72,8 @@ Future<void> init() async {
 
   // get user
   myInjection.registerFactory(
-    () => ProfileBloc(
+    () => DashboardBloc(
+      myInjection(),
       myInjection(),
     )
   );
@@ -82,7 +84,13 @@ Future<void> init() async {
     )
   );
 
-  myInjection.registerLazySingleton<ProfileRepository>(
+  myInjection.registerLazySingleton(
+    () => GetPaint(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton<DashboardRepository>(
     () => ProfileRepositoryImpl(
       myInjection(),
     )

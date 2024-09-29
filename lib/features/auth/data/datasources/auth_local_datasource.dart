@@ -1,4 +1,4 @@
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
+import '../../../../core/services/shared_preferences.dart';
 
 
 abstract class AuthLocalDatasource {

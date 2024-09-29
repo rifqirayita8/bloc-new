@@ -1,4 +1,4 @@
-import 'package:my_practice_bloc/features/dashboard/domain/entities/profile.dart';
+import '../../domain/entities/profile.dart';
 
 class ProfileModel extends Profile {
   final String firstName;
@@ -16,7 +16,7 @@ class ProfileModel extends Profile {
   
   factory ProfileModel.fromJson(Map<String, dynamic> data) {
     return ProfileModel(
-      id: data['id'] ?? '', 
+      id: data['id'] ?? 0, 
       firstName: data['first_name'] ?? '', 
       lastName: data['last_name'] ?? '', 
       email: data['email'] ?? '', 

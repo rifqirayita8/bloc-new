@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_practice_bloc/example/dependency_injection_provider/center_container.dart';
-import 'package:my_practice_bloc/example/dependency_injection_provider/counter_cubit_three.dart';
-import 'package:my_practice_bloc/example/dependency_injection_provider/next_page.dart';
+import 'center_container.dart';
+import 'counter_cubit_three.dart';
+import 'next_page.dart';
 
 class DiProviderExample extends StatelessWidget {
   const DiProviderExample({super.key});

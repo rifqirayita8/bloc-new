@@ -1,4 +1,4 @@
-import 'package:my_practice_bloc/features/auth/domain/repositories/auth_repository.dart';
+import '../repositories/auth_repository.dart';
 
 class UserSetUrl {
   final AuthRepository authRepository;

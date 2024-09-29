@@ -1,5 +1,6 @@
-import 'package:my_practice_bloc/injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../injection.dart';
 
 class SharedPreferencesHelper {
   final SharedPreferences _prefs;

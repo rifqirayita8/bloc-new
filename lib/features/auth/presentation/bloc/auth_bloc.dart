@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
-import 'package:my_practice_bloc/features/auth/domain/usecases/user_login.dart';
-import 'package:my_practice_bloc/features/auth/domain/usecases/user_set_url.dart';
+import '../../../../core/services/shared_preferences.dart';
+import '../../domain/usecases/user_login.dart';
+import '../../domain/usecases/user_set_url.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

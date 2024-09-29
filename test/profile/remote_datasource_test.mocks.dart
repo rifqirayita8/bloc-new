@@ -10,7 +10,7 @@ import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_rem
     as _i3;
 import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart'
     as _i2;
-import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart'
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/dashboard_params.dart'
     as _i5;
 
 // ignore_for_file: type=lint
@@ -42,7 +42,7 @@ class _FakeProfileModel_0 extends _i1.SmartFake implements _i2.ProfileModel {
 class MockProfileRemoteDatasource extends _i1.Mock
     implements _i3.ProfileRemoteDatasource {
   @override
-  _i4.Future<_i2.ProfileModel> getUser(_i5.GetUserParams? params) =>
+  _i4.Future<_i2.ProfileModel> getUser(_i5.DashboardParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getUser,

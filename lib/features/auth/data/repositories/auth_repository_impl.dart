@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_practice_bloc/core/error/exception.dart';
-import 'package:my_practice_bloc/core/error/failure.dart';
-import 'package:my_practice_bloc/features/auth/data/datasources/auth_local_datasource.dart';
-import 'package:my_practice_bloc/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:my_practice_bloc/features/auth/domain/repositories/auth_repository.dart';
+import '../../../../core/error/exception.dart';
+import '../../../../core/error/failure.dart';
+import '../datasources/auth_local_datasource.dart';
+import '../datasources/auth_remote_datasource.dart';
+import '../../domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDatasource authRemoteDatasource;

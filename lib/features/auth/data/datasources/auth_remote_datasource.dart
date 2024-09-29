@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:my_practice_bloc/core/error/exception.dart';
-import 'package:my_practice_bloc/core/services/my_interceptor.dart';
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
-import 'package:my_practice_bloc/injection.dart';
+import '../../../../core/error/exception.dart';
+import '../../../../core/services/my_interceptor.dart';
+import '../../../../core/services/shared_preferences.dart';
+import '../../../../injection.dart';
 
 abstract class AuthRemoteDatasource {
   Future<String> authLogin(String email, String password);

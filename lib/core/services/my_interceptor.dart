@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
-import 'package:my_practice_bloc/injection.dart';
+
+import '../../injection.dart';
+import 'shared_preferences.dart';
 
 class MyInterceptor extends Interceptor {
   final SharedPreferencesHelper _sharedPreferencesHelper;

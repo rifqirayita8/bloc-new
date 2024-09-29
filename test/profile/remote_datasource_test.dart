@@ -3,7 +3,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_practice_bloc/features/dashboard/data/datasources/profile_remote_datasource.dart';
 import 'package:my_practice_bloc/features/dashboard/data/models/profile_model.dart';
-import 'package:my_practice_bloc/features/dashboard/domain/usecases/profile_params.dart';
+import 'package:my_practice_bloc/features/dashboard/domain/usecases/dashboard_params.dart';
 
 // Annotation which generates the cat.mocks.dart library and the MockCat class.
 @GenerateNiceMocks([MockSpec<ProfileRemoteDatasource>()])
@@ -14,7 +14,7 @@ void main() async {
   var remoteDataSource = MockProfileRemoteDatasource();
 
   const int userId= 1;
-  GetUserParams params= GetUserParams(id: userId);
+  DashboardParams params= DashboardParams(id: userId);
 
   ProfileModel fakeProfileModel= const ProfileModel(
     id: userId, 

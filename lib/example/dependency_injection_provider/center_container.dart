@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_practice_bloc/example/dependency_injection_provider/content.dart';
+
+import 'content.dart';
 
 class CenterContainer extends StatelessWidget {
   const CenterContainer({super.key});

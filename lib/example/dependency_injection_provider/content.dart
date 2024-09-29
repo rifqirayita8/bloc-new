@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_practice_bloc/example/dependency_injection_provider/counter_cubit_three.dart';
+import 'counter_cubit_three.dart';
 
 class Content extends StatelessWidget {
   const Content({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_practice_bloc/core/services/shared_preferences.dart';
-import 'package:my_practice_bloc/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:my_practice_bloc/features/auth/presentation/widgets/custom_text_field.dart';
-import 'package:my_practice_bloc/features/dashboard/presentation/pages/get_user_page.dart';
+import '../../../../core/services/shared_preferences.dart';
+import '../bloc/auth_bloc.dart';
+import '../widgets/custom_text_field.dart';
+import '../../../dashboard/presentation/pages/get_user_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
