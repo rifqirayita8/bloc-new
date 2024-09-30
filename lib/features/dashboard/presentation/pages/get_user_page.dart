@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_practice_bloc/features/homepage/presentation/pages/homepage.dart';
 import '../../domain/entities/paint.dart' as cat;
 import '../../domain/entities/profile.dart';
 import '../../domain/usecases/dashboard_params.dart';
@@ -184,6 +185,17 @@ class GetUserPage extends StatelessWidget {
                 }
                 return const SizedBox.shrink();
               } 
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
+              }, 
+              child: const Text(
+                'Homepage',
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              )
             ),
           ],
         ),

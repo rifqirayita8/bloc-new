@@ -1,5 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:my_practice_bloc/features/homepage/data/datasources/homepage_remote_datasource.dart';
+import 'package:my_practice_bloc/features/homepage/data/repositories/homepage_repository_impl.dart';
+import 'package:my_practice_bloc/features/homepage/domain/repositories/homepage_repository.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource.dart';
+import 'package:my_practice_bloc/features/homepage/presentation/bloc/homepage_bloc.dart';
 import 'core/services/shared_preferences.dart';
 import 'features/auth/data/datasources/auth_local_datasource.dart';
 import 'features/auth/data/datasources/auth_remote_datasource.dart';
@@ -100,5 +106,35 @@ Future<void> init() async {
     () => ProfileRemoteDatasourceImpl(
       // myInjection(),
     )
+  );
+
+  //homepage
+  myInjection.registerFactory(
+    () => HomepageBloc(
+      myInjection(),
+      myInjection(),
+    )
+  );
+
+  myInjection.registerLazySingleton(
+    () => GetProfile(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton(
+    () => GetResource(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton<HomepageRepository>(
+    () => HomepageRepositoryImpl(
+      myInjection(),
+    )
+  );
+
+  myInjection.registerLazySingleton<HomepageRemoteDatasource>(
+    () => HomepageRemoteDatasourceImpl()
   );
 }

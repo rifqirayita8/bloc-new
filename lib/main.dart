@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_practice_bloc/features/homepage/presentation/bloc/homepage_bloc.dart';
 import 'package:my_practice_bloc/observer.dart';
 import 'example/bloc_builder/bloc_builder_consumer_example.dart';
 import 'example/dependency_injection_provider/counter_cubit_three.dart';
@@ -27,7 +28,8 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CounterCubitThree()),
         BlocProvider(create: (context) => myInjection<AuthBloc>()),
-        BlocProvider(create: (context) => myInjection<DashboardBloc>(),)
+        BlocProvider(create: (context) => myInjection<DashboardBloc>()),
+        BlocProvider(create: (context) => myInjection<HomepageBloc>())
       ],
       child: const MaterialApp(
         home: LoginPage(),
