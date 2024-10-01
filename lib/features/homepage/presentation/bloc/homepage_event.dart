@@ -10,3 +10,5 @@ abstract class HomepageEvent extends Equatable {
 class HomepageGetProfile extends HomepageEvent {}
 
 class HomepageGetResource extends HomepageEvent {}
+
+class HomepageGetAddress extends HomepageEvent {}

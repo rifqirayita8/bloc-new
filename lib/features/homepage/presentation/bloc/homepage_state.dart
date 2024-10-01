@@ -27,12 +27,22 @@ class GetResourceSuccess extends HomepageState {
 }
 
 class HomepageLoaded extends HomepageState {
-  final String profile;
+  final String user;
   final String resource;
-  const HomepageLoaded({required this.profile, required this.resource});
+  final String address;
+
+  const HomepageLoaded({
+    required this.user, 
+    required this.resource,
+    required this.address
+  });
 
   @override
-  List<Object> get props => [profile, resource];
+  List<Object> get props => [
+    user, 
+    resource,
+    address
+  ];
 }
 
 class HomepageFailure extends HomepageState {

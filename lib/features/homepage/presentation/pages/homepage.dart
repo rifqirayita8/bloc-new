@@ -9,25 +9,27 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<HomepageBloc>().add(HomepageGetProfile());
     context.read<HomepageBloc>().add(HomepageGetResource());
+    context.read<HomepageBloc>().add(HomepageGetAddress());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Homepage'),
       ),
       body: BlocBuilder<HomepageBloc, HomepageState>(
         builder: (context, state) {
-          if (state is HomepageSuccess) {
+          if (state is HomepageLoading) {
+            return const CircularProgressIndicator();
+          } else if (state is HomepageLoaded) {
             return Column(
               children: [
-                Text('Name: ${state.profile}'),
-                Text('Resource: ${state.resource}'),
+                Text(state.user),
+                Text(state.resource),
+                Text(state.address),
               ],
             );
-          } else if (state is HomepageFailure) {
-            return Text('Error: ${state.message}');
-          } else if (state is HomepageLoading) {
-            return const CircularProgressIndicator();
+          } else if(state is HomepageFailure) {
+            return const Text('Failed to load data');
           }
-          return const CircularProgressIndicator();
+          return const SizedBox.shrink();
         },
       ),
     );
