@@ -30,18 +30,21 @@ class HomepageLoaded extends HomepageState {
   final String user;
   final String resource;
   final String address;
+  final List<HomepageData> userList;
 
   const HomepageLoaded({
     required this.user, 
     required this.resource,
-    required this.address
+    required this.address,
+    required this.userList,
   });
 
   @override
   List<Object> get props => [
     user, 
     resource,
-    address
+    address,
+    userList,
   ];
 }
 

@@ -1,17 +1,26 @@
-// import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart';
 
-// class HomepageData extends Equatable {
-//   final String? profile;
-//   final String? resource;
+class HomepageData extends Equatable {
+  final int id;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String avatar;
 
-//   const HomepageData({
-//     this.profile, 
-//     this.resource
-//   });
+  const HomepageData({
+    required this.id, 
+    required this.email, 
+    required this.firstName, 
+    required this.lastName, 
+    required this.avatar
+  });
   
-//   @override
-//   List<Object?> get props => [
-//     profile,
-//     resource
-//   ];
-// }
+  @override
+  List<Object?> get props => [
+    id, 
+    email, 
+    firstName, 
+    lastName, 
+    avatar
+  ];
+}

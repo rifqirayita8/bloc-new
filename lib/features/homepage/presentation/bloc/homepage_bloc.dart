@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:my_practice_bloc/features/homepage/domain/entities/homepage_entities.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource.dart';
-import 'package:my_practice_bloc/features/homepage/presentation/bloc/model_coba.dart';
 
 part 'homepage_event.dart';
 part 'homepage_state.dart';
@@ -10,14 +11,17 @@ part 'homepage_state.dart';
 class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
   final GetProfile getProfile;
   final GetResource getResource;
+  final GetProfileList getProfileList;
   
-  HomepageBloc(
-    this.getProfile, 
-    this.getResource
-  ) : super(HomepageInitial()) {
+  HomepageBloc({
+    required this.getProfile, 
+    required this.getResource,
+    required this.getProfileList,
+  }) : super(HomepageInitial()) {
     on<HomepageGetProfile>(_onGetProfile);
     on<HomepageGetResource>(_onGetResource);
     on<HomepageGetAddress>(_onGetAddress);
+    on<HomepageGetProfileList>(_onGetProfileList);
   }
     Future<void> _onGetProfile(
       HomepageGetProfile event,
@@ -29,9 +33,19 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
           (profile) {
             if (state is HomepageLoaded) {
               final currentState= state as HomepageLoaded;
-              emit(HomepageLoaded(user: profile, resource: currentState.resource, address: currentState.address));
+              emit(HomepageLoaded(
+                user: profile, 
+                resource: currentState.resource, 
+                address: currentState.address,
+                userList: currentState.userList,
+              ));
             } else {
-              emit(HomepageLoaded(user: profile, resource: '', address: ''));
+              emit(HomepageLoaded(
+                user: profile, 
+                resource: '', 
+                address: '',
+                userList: const []
+              ));
             }
           }
         );
@@ -47,9 +61,19 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
           (resource) {
             if (state is HomepageLoaded) {
               final currentState= state as HomepageLoaded;
-              emit(HomepageLoaded(user: currentState.user, resource: resource, address: currentState.address));
+              emit(HomepageLoaded(
+                user: currentState.user, 
+                resource: resource, 
+                address: currentState.address,
+                userList: currentState.userList,
+              ));
             } else {
-              emit(HomepageLoaded(user: '', resource: resource, address: ''));
+              emit(HomepageLoaded(
+                user: '', 
+                resource: resource, 
+                address: '',
+                userList: const []
+              ));
             }
           }
         );
@@ -63,10 +87,52 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
           const res= 'Ponorogo';
           if (state is HomepageLoaded) {
             final currentState= state as HomepageLoaded;
-            emit(HomepageLoaded(user: currentState.user, resource: currentState.resource, address: res));
+            emit(HomepageLoaded(
+              user: currentState.user, 
+              resource: currentState.resource, 
+              address: res,
+              userList: currentState.userList,
+            ));
           } else {
-            emit(const HomepageLoaded(user: '', resource: '', address: res));
+            emit(const HomepageLoaded(
+              user: '', 
+              resource: '', 
+              address: res,
+              userList: []
+            ));
           }
+        } catch(e) {
+          emit(const HomepageFailure(message: 'Failed to load data'));
+        }
+      }
+
+      Future<void> _onGetProfileList(
+        HomepageGetProfileList event,
+        Emitter<HomepageState> emit,
+      ) async {
+        try {
+          final res= await getProfileList.execute();
+          res.fold(
+            (failure) => emit(HomepageFailure(message: failure.message)), 
+            (profileList) {
+              if (state is HomepageLoaded) {
+                final currentState= state as HomepageLoaded;
+                emit(HomepageLoaded(
+                  user: currentState.user, 
+                  resource: currentState.resource, 
+                  address: currentState.address,
+                  userList: profileList,
+                ));
+              } else {
+                emit(HomepageLoaded(
+                  user: '', 
+                  resource: '', 
+                  address: '',
+                  userList: profileList,
+                ));
+              }
+            }
+          );
         } catch(e) {
           emit(const HomepageFailure(message: 'Failed to load data'));
         }
