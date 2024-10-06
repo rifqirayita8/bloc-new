@@ -14,3 +14,5 @@ class HomepageGetResource extends HomepageEvent {}
 class HomepageGetAddress extends HomepageEvent {}
 
 class HomepageGetProfileList extends HomepageEvent {}
+
+class HomepageGetResourceList extends HomepageEvent {}

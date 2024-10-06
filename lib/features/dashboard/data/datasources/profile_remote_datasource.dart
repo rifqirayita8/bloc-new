@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:my_practice_bloc/core/error/exception.dart';
 import '../models/paint_model.dart';
 import '../models/profile_model.dart';
 import '../../domain/usecases/dashboard_params.dart';
@@ -18,10 +19,10 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
         final data = response.data['data'];
         return ProfileModel.fromJson(data);
       } else {
-        throw Exception('Failed to load user');
+        throw ServerException(message: 'Failed to load user: ${response.statusCode}');
       }
     } catch(e) {
-      throw Exception('Failed to load user: $e');
+      throw GeneralException(message: 'Failed to load user: $e');
     }
   }
   
@@ -33,7 +34,7 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
       final dataRes= response.data['data'];
       return PaintModel.fromJson(dataRes);
     } catch(e) {
-      throw Exception('Failed to load paint: $e');
+      throw GeneralException(message: 'Failed to load paint: $e');
     }
   }
   

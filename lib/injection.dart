@@ -6,6 +6,7 @@ import 'package:my_practice_bloc/features/homepage/domain/repositories/homepage_
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource_list.dart';
 import 'package:my_practice_bloc/features/homepage/presentation/bloc/homepage_bloc.dart';
 import 'core/services/shared_preferences.dart';
 import 'features/auth/data/datasources/auth_local_datasource.dart';
@@ -115,6 +116,7 @@ Future<void> init() async {
       getProfile: myInjection(),
       getResource: myInjection(),
       getProfileList: myInjection(),
+      getResourceList: myInjection(),
     )
   );
 
@@ -132,6 +134,12 @@ Future<void> init() async {
 
   myInjection.registerLazySingleton(
     () => GetProfileList(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton(
+    () => GetResourceList(
       myInjection()
     )
   );

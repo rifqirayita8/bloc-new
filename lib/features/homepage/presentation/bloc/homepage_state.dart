@@ -31,12 +31,14 @@ class HomepageLoaded extends HomepageState {
   final String resource;
   final String address;
   final List<HomepageData> userList;
+  final List<Resource> resourceList;
 
   const HomepageLoaded({
     required this.user, 
     required this.resource,
     required this.address,
     required this.userList,
+    required this.resourceList
   });
 
   @override
@@ -45,6 +47,7 @@ class HomepageLoaded extends HomepageState {
     resource,
     address,
     userList,
+    resourceList
   ];
 }
 

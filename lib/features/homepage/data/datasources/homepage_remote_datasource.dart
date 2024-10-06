@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:my_practice_bloc/features/homepage/data/models/homepage_model.dart';
+import 'package:my_practice_bloc/features/homepage/data/models/resource_model.dart';
 
 abstract class HomepageRemoteDatasource {
   Future<String> getProfile();
   Future<String> getResource();
   Future<List<HomepageDataModel>> getProfileList();
+  Future<List<ResourceModel>> getResourceList();
 }
 
 class HomepageRemoteDatasourceImpl implements HomepageRemoteDatasource {
@@ -41,6 +43,18 @@ class HomepageRemoteDatasourceImpl implements HomepageRemoteDatasource {
       return HomepageDataModel.fromJsonList(profileList);
     } catch(e) {
       throw Exception('Failed to load profile list: $e');
+    }
+  }
+  
+  @override
+  Future<List<ResourceModel>> getResourceList() async {
+    final dio= Dio();
+    try {
+      final response= await dio.get('https://reqres.in/api/unknown');
+      final resourceList= response.data['data'] as List<dynamic>;
+      return ResourceModel.fromJsonList(resourceList);
+    } catch(e) {
+      throw Exception('Failed to load resource list: $e');
     }
   }
 }

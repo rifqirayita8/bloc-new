@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:my_practice_bloc/core/error/failure.dart';
 import 'package:my_practice_bloc/features/homepage/data/datasources/homepage_remote_datasource.dart';
 import 'package:my_practice_bloc/features/homepage/domain/entities/homepage_entities.dart';
+import 'package:my_practice_bloc/features/homepage/domain/entities/resource.dart';
 import 'package:my_practice_bloc/features/homepage/domain/repositories/homepage_repository.dart';
 
 class HomepageRepositoryImpl implements HomepageRepository{
@@ -34,6 +35,16 @@ class HomepageRepositoryImpl implements HomepageRepository{
       final response= await remoteDatasource.getProfileList();
       return right(response);
     }catch(e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Resource>>> getResourceList() async {
+    try {
+      final response= await remoteDatasource.getResourceList();
+      return right(response);
+    } catch(e) {
       return left(Failure(e.toString()));
     }
   }

@@ -11,11 +11,13 @@ class Homepage extends StatelessWidget {
     context.read<HomepageBloc>().add(HomepageGetResource());
     context.read<HomepageBloc>().add(HomepageGetAddress());
     context.read<HomepageBloc>().add(HomepageGetProfileList());
+    context.read<HomepageBloc>().add(HomepageGetResourceList());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Homepage'),
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           BlocBuilder<HomepageBloc, HomepageState>(
             builder: (context, state) {
@@ -53,6 +55,27 @@ class Homepage extends StatelessWidget {
                   );
                 } else if(state is HomepageFailure) {
                   return const Text('Failed to load data');
+                }
+                return const SizedBox.shrink();
+              }
+            ),
+          ),
+          Expanded(
+            child: BlocBuilder<HomepageBloc, HomepageState>(
+              builder: (context, state) {
+                if (state is HomepageLoading) {
+                  return const CircularProgressIndicator();
+                } else if (state is HomepageLoaded) {
+                  return ListView.builder(
+                    itemCount: state.resourceList.length,
+                    itemBuilder: (context, index) {
+                      final resource= state.resourceList[index];
+                      return ListTile(
+                        title: Text(resource.name),
+                        subtitle: Text(resource.year.toString()),
+                      );
+                    }
+                  );
                 }
                 return const SizedBox.shrink();
               }
