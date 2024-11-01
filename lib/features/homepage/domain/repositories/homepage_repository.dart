@@ -8,4 +8,5 @@ abstract class HomepageRepository {
   Future<Either<Failure, String>> getResource();
   Future<Either<Failure, List<HomepageData>>> getProfileList();
   Future<Either<Failure, List<Resource>>> getResourceList();
+  Future<Either<Failure, List>> getNameList({required int page});
 }

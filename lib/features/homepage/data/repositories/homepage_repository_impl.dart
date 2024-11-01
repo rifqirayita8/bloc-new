@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:my_practice_bloc/core/error/exception.dart';
 import 'package:my_practice_bloc/core/error/failure.dart';
 import 'package:my_practice_bloc/features/homepage/data/datasources/homepage_remote_datasource.dart';
 import 'package:my_practice_bloc/features/homepage/domain/entities/homepage_entities.dart';
@@ -46,6 +47,16 @@ class HomepageRepositoryImpl implements HomepageRepository{
       return right(response);
     } catch(e) {
       return left(Failure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, List>> getNameList({required int page}) async {
+    try {
+      final response= await remoteDatasource.getNameList(page: page);
+      return right(response);
+    } on GeneralException catch(e) {
+      return left(Failure(e.message));
     }
   }
   

@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:my_practice_bloc/features/homepage/data/datasources/homepage_remote_datasource.dart';
 import 'package:my_practice_bloc/features/homepage/data/repositories/homepage_repository_impl.dart';
 import 'package:my_practice_bloc/features/homepage/domain/repositories/homepage_repository.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_name_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource.dart';
@@ -117,6 +118,7 @@ Future<void> init() async {
       getResource: myInjection(),
       getProfileList: myInjection(),
       getResourceList: myInjection(),
+      getNameList: myInjection(),
     )
   );
 
@@ -140,6 +142,12 @@ Future<void> init() async {
 
   myInjection.registerLazySingleton(
     () => GetResourceList(
+      myInjection()
+    )
+  );
+
+  myInjection.registerLazySingleton(
+    () => GetNameList(
       myInjection()
     )
   );

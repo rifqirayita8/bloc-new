@@ -68,3 +68,12 @@ class HomepageSuccess extends HomepageState {
   @override
   List<Object> get props => [profile, resource];
 }
+
+class NameListLoaded extends HomepageState {
+  final List nameList;
+
+  const NameListLoaded({required this.nameList});
+
+  @override
+  List<Object> get props => [nameList];
+}

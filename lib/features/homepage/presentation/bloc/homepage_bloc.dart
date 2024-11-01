@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:my_practice_bloc/features/homepage/domain/entities/homepage_entities.dart';
 import 'package:my_practice_bloc/features/homepage/domain/entities/resource.dart';
+import 'package:my_practice_bloc/features/homepage/domain/usecases/get_name_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_profile_list.dart';
 import 'package:my_practice_bloc/features/homepage/domain/usecases/get_resource.dart';
@@ -15,18 +16,21 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
   final GetResource getResource;
   final GetProfileList getProfileList;
   final GetResourceList getResourceList;
+  final GetNameList getNameList;
   
   HomepageBloc({
     required this.getProfile, 
     required this.getResource,
     required this.getProfileList,
     required this.getResourceList,
+    required this.getNameList
   }) : super(HomepageInitial()) {
     on<HomepageGetProfile>(_onGetProfile);
     on<HomepageGetResource>(_onGetResource);
     on<HomepageGetAddress>(_onGetAddress);
     on<HomepageGetProfileList>(_onGetProfileList);
     on<HomepageGetResourceList>(_onGetResourceList);
+    on<FetchNameList>(_onGetNameList);
   }
 
     Future<void> _onGetProfile(
@@ -173,5 +177,14 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
           }
         );
       }
-    
+    Future<void> _onGetNameList(
+      FetchNameList event,
+      Emitter<HomepageState> emit,
+    ) async {
+      final res= await getNameList.execute(page: event.page);
+      res.fold(
+        (failure) => emit(HomepageFailure(message: failure.message)), 
+        (success) => emit(NameListLoaded(nameList: success))
+      );
+    }
   }

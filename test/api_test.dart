@@ -9,8 +9,11 @@ void main() async {
 
   );
   try {
-    var response= await profileRemoteDatasourceImpl.getResourceList();
-    print(response);
+    var response= await profileRemoteDatasourceImpl.getNameList(page: 2);
+    for (var i in response) {
+      print(i);
+    }
+    // print(response);
   } catch(e) {
     print(e);
   }

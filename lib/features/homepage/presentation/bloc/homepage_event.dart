@@ -16,3 +16,12 @@ class HomepageGetAddress extends HomepageEvent {}
 class HomepageGetProfileList extends HomepageEvent {}
 
 class HomepageGetResourceList extends HomepageEvent {}
+
+class FetchNameList extends HomepageEvent {
+  final int page;
+
+  const FetchNameList({required this.page});
+
+  @override
+  List<Object> get props => [page];
+}

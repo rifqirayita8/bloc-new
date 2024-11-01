@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_practice_bloc/features/homepage/presentation/pages/lazy_loading.dart';
 import '../../../../core/services/shared_preferences.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/custom_text_field.dart';
@@ -152,6 +153,12 @@ class LoginPage extends StatelessWidget {
                     ),
                   )
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LazyLoading()));
+                  },
+                  child: const Text('Lazy Loading',)
+                )
               ],
             )
           );

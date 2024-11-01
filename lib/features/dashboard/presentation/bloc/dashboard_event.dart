@@ -26,3 +26,4 @@ class AuthGetPaint extends DashboardEvent {
 class ResetPaint extends DashboardEvent {
   const ResetPaint();
 }
+
